@@ -1,4 +1,4 @@
-package MyLibrary;
+package LibraryApp;
 
 import java.util.Scanner;
 
@@ -47,28 +47,28 @@ class Main {
 
   public static void initLibraryData() {
     Book book1 = new Book();
-    book1.id = "1";
-    book1.title = "Clean Code: A Handbook of Agile Software Craftsmanship";
+    book1.setId("1");
+    book1.setTitle("Clean Code: A Handbook of Agile Software Craftsmanship");
 
     Book book2 = new Book();
-    book2.id = "2";
-    book2.title = "Design Patterns: Elements of Reusable Object-Oriented Software";
+    book2.setId("2");
+    book2.setTitle("Design Patterns: Elements of Reusable Object-Oriented Software");
 
     Book book3 = new Book();
-    book3.id = "3";
-    book3.title = "Refactoring: Improving the Design of Existing Code";
+    book3.setId("3");
+    book3.setTitle("Refactoring: Improving the Design of Existing Code");
 
-    Member member1 = new Member();
-    member1.id = "1";
-    member1.name = "Ada Lovelace";
+    Reader member1 = new Reader();
+    member1.setId("1");
+    member1.setName("Ada Lovelace");
 
-    Member member2 = new Member();
-    member2.id = "2";
-    member2.name = "Linus Torvalds";
+    Reader member2 = new Reader();
+    member2.setId("2");
+    member2.setName("Linus Torvalds");
 
-    Member member3 = new Member();
-    member3.id = "3";
-    member3.name = "James Gosling";
+    Reader member3 = new Reader();
+    member3.setId("3");
+    member3.setName("James Gosling");
     
     library.books.add(book1);
     library.books.add(book2);
@@ -87,24 +87,24 @@ class Main {
 
   public static void showBooks() {
     for (Book book : library.books) {
-      System.out.println(book.id + " " + book.title);
+      System.out.println(book.getId() + " " + book.getTitle());
     }
   }
 
   public static void showMembers() {
-    for (Member member : library.members) {
-      System.out.println(member.id + " " + member.name);
+    for (Reader member : library.members) {
+      System.out.println(member.getId() + " " + member.getName());
     }
   }
 
   public static void addMember() {
-    Member member = new Member();
+    Reader member = new Reader();
 
     System.out.print("id : ");
-    member.id = scan.next();
+    member.setId(scan.next());
 
     System.out.print("name : ");
-    member.name = scan.next();
+    member.setName(scan.next());
 
     library.addMember(member);
   }

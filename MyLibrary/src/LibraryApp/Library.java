@@ -1,19 +1,19 @@
-package MyLibrary;
+package LibraryApp;
 
 import java.util.ArrayList;
 
 class Library {
   public ArrayList<Book> books = new ArrayList<Book>();
-  public ArrayList<Member> members = new ArrayList<Member>();
+  public ArrayList<Reader> members = new ArrayList<Reader>();
 
-  public void addMember(Member member) {
+  public void addMember(Reader member) {
     this.members.add(member);
   }
 
   public Boolean isMemberIdExist(String id) {
     Boolean isExist = false;
-    for (Member member : this.members) {
-      if (member.id == id) {
+    for (Reader member : this.members) {
+      if (member.getId() == id) {
         isExist = true;
       }
     }
@@ -24,27 +24,27 @@ class Library {
     Book book = this.getBookById(bookId);
     this.books.remove(book);
 
-    Member member = this.getMemberById(memberId);
+    Reader member = this.getMemberById(memberId);
     int memberIndex = this.getMemberIndex(member);
-    this.members.get(memberIndex).borrowedBooks.add(book);
+    this.members.get(memberIndex).getBorrowedBooks().add(book);
   }
 
   public void receiveBook(String bookId, String memberId) {
     Book book = this.getBookById(bookId);
     this.books.add(book);
 
-    Member member = this.getMemberById(memberId);
+    Reader member = this.getMemberById(memberId);
     int memberIndex = this.getMemberIndex(member);
-    this.members.get(memberIndex).borrowedBooks.remove(book);
+    this.members.get(memberIndex).getBorrowedBooks().remove(book);
   }
 
-  private int getMemberIndex(Member member) {
+  private int getMemberIndex(Reader member) {
     return this.members.indexOf(member);
   }
 
-  private Member getMemberById(String id) {
-    for (Member member : this.members) {
-      if (member.id.equals(id)) {
+  private Reader getMemberById(String id) {
+    for (Reader member : this.members) {
+      if (member.getId().equals(id)) {
         return member;
       }
     }
@@ -53,7 +53,7 @@ class Library {
 
   private Book getBookById(String id) {
     for (Book book : this.books) {
-      if (book.id.equals(id)) {
+      if (book.getId().equals(id)) {
         return book;
       }
     }
